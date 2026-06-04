@@ -1,0 +1,318 @@
+/* ==========================================================================
+   🎴 大正浪漫・摩卡抹茶手帖 (v13.8 吉祥物對話框覆蓋流修正・其餘完全不動版)
+   ========================================================================== */
+
+:root {
+    --color-matcha-pale: #746e67;  /* 🍵 背景底色：沉穩冷調中低飽和灰茶綠 */
+    --color-matcha-dark: #8F9E8A;  /* 🍵 點綴：冷調中抹茶 */
+    --color-cream: #E6ECE3;        /* 🟢 卡片底色：優雅極淡抹茶綠 */
+    --color-oats: #BAC5B4;         /* 🍃 邊框：淺灰綠 */
+    --color-oats-dark: #6E7B68;    /* 🍃 裝飾：深灰綠 */
+    --color-mocha: #413225;        /* 🟤 文字：炭焙深茶褐 */
+    
+    /* 🎨 區塊色彩層次 */
+    --color-home-memo-bg: #B2C2AD;    /* 🍃 Home 備忘錄：溫潤的青瓷苔綠 */
+    --color-dislike-heavy-bg: #9EB099; /* ⚡ Dislike 避雷框：穩重的千歲常磐綠 */
+    
+    --accent-crimson: #e4d784;     /* 💛 點綴色：柔和、低飽和度的日式烤黃豆粉色 */
+}
+
+/* ==========================================================================
+   🧱 全局配置
+   ========================================================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--color-matcha-pale); 
+    color: var(--color-mocha);
+    font-family: "Noto Serif TC", "Klee One", serif;
+    line-height: 1.7;
+    padding: 20px 16px 160px 16px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* 📜 大正文學・日式古典織物格紋背景 */
+.taisho-paper-texture {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100vw; 
+    height: 100vh; 
+    z-index: -1;
+    background-image: 
+        linear-gradient(90deg, rgba(65, 50, 37, 0.05) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(65, 50, 37, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(228, 215, 132, 0.04) 4px, transparent 4px),
+        linear-gradient(0deg, rgba(228, 215, 132, 0.04) 4px, transparent 4px);
+    background-size: 28px 28px;
+    background-position: 0 0, 0 0, -2px -2px, -2px -2px;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   📰 主卡片框架
+   ========================================================================== */
+.taisho-gazette-card {
+    background: var(--color-cream); width: 100%; max-width: 920px; border-radius: 2px; padding: 18px; 
+    box-shadow: 0 20px 60px rgba(35, 40, 33, 0.25); border: 4px solid var(--color-mocha);
+    outline: 1px solid var(--color-oats); outline-offset: -8px; position: relative;
+    z-index: 10;
+}
+
+/* 報頭區 */
+.gazette-header { text-align: center; margin-bottom: 16px; }
+.header-top-line {
+    display: flex; justify-content: space-between; font-size: 11px; font-weight: 600; 
+    color: var(--color-mocha); border-bottom: 1px solid var(--color-mocha); padding-bottom: 4px; font-family: "Klee One", serif;
+}
+.header-star-decor { font-size: 12px; color: var(--accent-crimson); margin-top: 10px; } 
+.gazette-title { font-family: "Klee One", serif; font-size: 30px; font-weight: 700; letter-spacing: 6px; color: var(--color-mocha); margin: 4px 0 2px 0; }
+.gazette-subtitle { font-size: 9px; letter-spacing: 2px; color: var(--color-mocha); opacity: 0.6; font-weight: bold; }
+.gazette-double-line { height: 5px; border-top: 1px solid var(--color-mocha); border-bottom: 1px solid var(--color-mocha); margin-top: 12px; }
+
+/* ==========================================================================
+   🧭 導覽列
+   ========================================================================== */
+.taisho-ticket-nav { 
+    display: flex; 
+    gap: 6px; 
+    margin-bottom: 20px; 
+    z-index: 100;
+    position: sticky; 
+    top: 0; 
+    background: var(--color-cream); 
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(65, 50, 37, 0.15);
+}
+
+.nav-btn {
+    flex: 1; 
+    background: transparent;
+    border: 1px solid var(--color-mocha);
+    padding: 10px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.btn-decor-star { font-size: 9px; color: var(--color-mocha); opacity: 0.4; transition: all 0.2s ease; }
+.btn-en { font-family: "Noto Serif TC", serif; font-size: 12px; font-weight: 700; color: var(--color-mocha); letter-spacing: 1.5px; transition: all 0.2s ease; }
+.nav-btn:hover .btn-en { color: var(--color-mocha); }
+.nav-btn:hover .btn-decor-star { color: var(--color-mocha); opacity: 0.9; }
+
+.nav-btn.active {
+    background: rgba(228, 215, 132, 0.2); 
+    border-color: var(--color-mocha);
+    box-shadow: inset 0 0 0 2px var(--color-cream), inset 0 0 0 3px var(--color-mocha);
+}
+.nav-btn.active .btn-en { color: var(--color-mocha); font-weight: 700; }
+.nav-btn.active .btn-decor-star { color: var(--color-mocha); opacity: 1; }
+
+/* 排版流動 */
+.gazette-core-layout { display: flex; flex-direction: column; gap: 20px; }
+.gazette-profile-side { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+
+/* 相框 */
+.modern-portrait-box { background: transparent; padding: 3px; border: 1px solid var(--color-mocha); }
+
+/* 📸 全平台同步鎖定 1620x1500 近正方形 */
+.portrait-inner-frame { 
+    width: 100%; 
+    height: auto;               
+    aspect-ratio: 1620 / 1500;  
+    position: relative; 
+    border: 1px solid var(--color-mocha); 
+    overflow: hidden; 
+}
+
+/* 🎨 原色無濾鏡配置 */
+.portrait-img { width: 100%; height: 100%; object-fit: cover; filter: none; }
+
+.frame-corner { position: absolute; width: 8px; height: 8px; border: 2px solid var(--color-mocha); }
+.frame-corner.tl { top: 4px; left: 4px; border-right: none; border-bottom: none; }
+.frame-corner.tr { top: 4px; right: 4px; border-left: none; border-bottom: none; }
+.frame-corner.bl { bottom: 4px; left: 4px; border-right: none; border-top: none; }
+.frame-corner.br { bottom: 4px; right: 4px; border-left: none; border-top: none; }
+
+/* ==========================================================================
+   🔗 聯絡媒介樣式與顯示分流
+   ========================================================================== */
+.clean-social-container { width: 100%; padding: 4px 0; }
+.plate-title { 
+    text-align: center; 
+    font-size: 11px; 
+    margin-bottom: 8px; 
+    color: var(--color-mocha); 
+    font-weight: bold; 
+    letter-spacing: 1px; 
+    font-family: "Klee One", serif;
+}
+
+.social-responsive-box { display: flex; flex-direction: column; gap: 8px; }
+
+.social-each-link {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 38px; text-decoration: none;
+    border: 1px solid var(--color-mocha);
+    background: var(--color-matcha-dark); 
+    opacity: 0.9;
+    border-radius: 6px;                    
+    transition: all 0.2s ease;
+}
+.link-text { font-family: "Noto Serif TC", serif; font-size: 12px; font-weight: 700; color: var(--color-cream); letter-spacing: 1px; transition: all 0.2s ease; }
+
+.social-each-link:hover { opacity: 1; border-color: var(--color-mocha); background: rgba(228, 215, 132, 0.25); }
+.social-each-link:hover .link-text { color: var(--color-mocha); letter-spacing: 2px; }
+
+/* 📜 內頁分頁與內容樣式 */
+.gazette-content-side { width: 100%; }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; animation: taishoFadeIn 0.35s ease-out; }
+.section-title-banner { border-bottom: 2px solid var(--color-mocha); padding-bottom: 4px; margin-bottom: 16px; }
+.section-title-banner h2 { font-family: "Klee One", serif; font-size: 15px; color: var(--color-mocha); }
+.banner-sub { font-size: 9px; color: var(--color-mocha); opacity: 0.7; display: block; margin-top: -1px; }
+
+/* 📑 大正風格帳冊 */
+.taisho-profile-ledger { border: 1px solid var(--color-mocha); }
+.ledger-home-color { background: rgba(186, 197, 180, 0.3); }
+.ledger-dislike-color { background: rgba(143, 158, 138, 0.3); }
+.ledger-row, .ledger-row-status { display: flex; align-items: center; padding: 11px 12px; border-bottom: 1px dashed rgba(65, 50, 37, 0.25); }
+.ledger-row-status { border-bottom: none; }
+.ledger-label { font-family: "Klee One", serif; font-size: 12.5px; color: var(--color-mocha); opacity: 0.8; width: 75px; flex-shrink: 0; }
+.ledger-value { font-size: 13.5px; font-weight: 600; color: var(--color-mocha); width: 100%; }
+.taisho-stamp-badge { background: transparent; color: var(--color-mocha); border: 2px solid var(--color-mocha); padding: 1px 8px; font-family: "Klee One", serif; font-size: 11.5px; font-weight: 700; border-radius: 2px; display: inline-block; transform: rotate(-2deg); }
+
+/* 📝 備忘錄與公告框基底 */
+.supplement-memo-box { 
+    border: 1px solid var(--color-mocha); 
+    padding: 14px; 
+    position: relative; 
+    margin-top: 24px; 
+    margin-bottom: 24px; /* 👈 修正：增加下邊距，確保多個備忘錄連續排列時有規律間隔 */
+    box-shadow: 4px 4px 0px rgba(65, 50, 37, 0.08); 
+}
+.home-memo { background: var(--color-home-memo-bg); }
+
+/* ⚡ Dislike 避雷框樣式 */
+.dislike-heavy-box { 
+    background: var(--color-dislike-heavy-bg); 
+    border: 1px solid var(--color-mocha); 
+    box-shadow: 4px 4px 0px rgba(65, 50, 37, 0.06); 
+}
+.text-light { color: var(--color-mocha) !important; }
+.badge-dark { background: var(--color-mocha) !important; color: var(--color-cream) !important; } 
+.memo-badge { position: absolute; top: -11px; left: 12px; background: var(--accent-crimson); color: var(--color-mocha); border: 1px solid var(--color-mocha); font-size: 11px; font-weight: bold; padding: 0 8px; } 
+.memo-body { font-size: 12.5px; line-height: 1.7; color: var(--color-mocha); }
+
+/* 卷尾線 */
+.taisho-footer-spacer { width: 100%; background: transparent; border: none; }
+.spacer-line { width: 100%; border-bottom: 3px double var(--color-oats); line-height: 0.1em; margin: 10px 0; }
+.spacer-line span { background: var(--color-cream); padding-left: 15px; font-family: "Klee One", serif; font-size: 11px; color: var(--color-mocha); letter-spacing: 2px; font-weight: bold; }
+
+/* 🌸 LIKE 頁面 */
+.like-quad-grid { display: flex; flex-direction: column; gap: 14px; }
+.quad-block { border: 1px solid var(--color-mocha); padding: 12px; box-shadow: 2px 2px 0px rgba(65, 50, 37, 0.05); }
+.bg-oats-tint { background: rgba(228, 215, 132, 0.12); } 
+.bg-matcha-tint { background: rgba(143, 158, 138, 0.2); }
+.quad-header { font-family: "Klee One", serif; font-size: 13px; font-weight: bold; color: var(--color-mocha); border-bottom: 1px dashed rgba(65, 50, 37, 0.2); padding-bottom: 4px; margin-bottom: 10px; }
+.bubble-tags-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+.bubble-tag { background: rgba(255,255,255,0.4); color: var(--color-mocha); border: 1px solid var(--color-mocha); padding: 3px 10px; font-size: 12px; font-weight: 600; border-radius: 12px; box-shadow: 1px 1px 0px rgba(0,0,0,0.03); }
+
+/* ✉️ 彈窗 */
+.retro-modal-mask { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(35, 40, 33, 0.5); backdrop-filter: blur(1px); z-index: 999; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease-out; }
+.retro-modal-mask.active { opacity: 1; pointer-events: auto; }
+.retro-modal-paper { background: var(--color-cream); padding: 4px; border: 4px solid var(--color-mocha); width: 85%; max-width: 320px; box-shadow: 0 15px 40px rgba(0,0,0,0.25); transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.retro-modal-mask.active .retro-modal-paper { transform: scale(1); }
+.modal-decor-border { border: 1px dashed var(--color-mocha); padding: 22px 16px; text-align: center; }
+.modal-star { font-size: 12px; color: var(--accent-crimson); margin-bottom: 6px; } 
+.modal-title { font-family: "Klee One", serif; font-size: 14px; color: var(--color-mocha); margin-bottom: 10px; }
+.modal-text { font-size: 12.5px; line-height: 1.65; color: var(--color-mocha); margin-bottom: 18px; }
+.modal-close-btn { background: var(--color-mocha); color: var(--color-cream); border: none; padding: 6px 22px; font-size: 11px; cursor: pointer; font-family: "Klee One", serif; }
+
+/* ==========================================================================
+   🦊 全平台通用右下角懸浮框架
+   ========================================================================== */
+.universal-mascot-anchor { position: fixed; display: flex; flex-direction: column; align-items: center; }
+.mascot-bubble {
+    position: relative !important;
+    background: var(--accent-crimson); color: var(--color-mocha); border: 1px solid var(--color-mocha); 
+    padding: 6px 12px; font-size: 11px; font-weight: 600; border-radius: 4px; 
+    margin-bottom: -4px !important;  
+    white-space: nowrap; font-family: "Klee One", sans-serif; box-shadow: 2px 2px 0px rgba(0,0,0,0.08);
+    opacity: 0; transform: translateY(10px) scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease; pointer-events: none;
+}
+
+.mascot-bubble::after {
+    content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%); width: 0; height: 0;
+    border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid var(--color-mocha); z-index: 1;
+}
+
+.mascot-bubble::before {
+    content: ''; position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); width: 0; height: 0;
+    border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid var(--accent-crimson); z-index: 2;
+}
+
+.mascot-sprite { display: block; cursor: pointer; filter: drop-shadow(3px 3px 0px rgba(0,0,0,0.1)); transition: transform 0.25s ease; }
+.universal-mascot-anchor:hover .mascot-bubble { opacity: 1; transform: translateY(2px) scale(1); pointer-events: auto; }
+.universal-mascot-anchor:hover .mascot-sprite { transform: translateY(-4px); }
+
+/* ==========================================================================
+   📱 1. 【手機版專屬配置】 (<= 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .img-desktop-only { display: none; }
+    .img-mobile-only { display: block; }
+    .title-desktop-only { display: none !important; }
+
+    .taisho-ticket-nav { gap: 4px; padding: 6px 0; }
+    .nav-btn { padding: 8px 0; }
+    .btn-en { font-size: 11px; letter-spacing: 0.5px; }
+    .btn-decor-star { font-size: 8px; }
+
+    .social-responsive-box { flex-direction: row; gap: 6px; }
+    .social-each-link { flex: 1; height: 34px; }
+    .link-text { font-size: 11px; letter-spacing: 0px; }
+    .social-each-link:hover .link-text { letter-spacing: 0.5px; }
+
+    .universal-mascot-anchor { right: -80px; bottom: -20px; z-index: 99; }
+    .mascot-sprite { width: 280px; height: auto; max-width: 75vw; }
+    
+    .universal-mascot-anchor:active .mascot-bubble { opacity: 1; transform: translateY(2px) scale(1); }
+}
+
+/* ==========================================================================
+   💻 2. 【電腦版專屬配置】 (>= 769px)
+   ========================================================================== */
+@media (min-width: 769px) {
+    body { padding: 30px 20px; } 
+    .taisho-gazette-card { padding: 24px; } 
+    .gazette-title { font-size: 38px; }
+    .img-desktop-only { display: block; }
+    .img-mobile-only { display: none; }
+    .title-desktop-only { display: block; }
+
+    .gazette-core-layout { flex-direction: row; align-items: flex-start; gap: 26px; }
+    .gazette-profile-side { flex: 0 0 185px; position: sticky; top: 70px; } 
+    .gazette-content-side { flex: 1; }
+    .like-quad-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+
+    .universal-mascot-anchor { right: calc(50% - 460px - 120px); bottom: 10px; left: auto; z-index: 101; }
+    @media (max-width: 1260px) { .universal-mascot-anchor { right: -20px; } }
+
+    .mascot-bubble { font-size: 13px; padding: 5px 12px; margin-bottom: -4px !important; }
+    .mascot-sprite { width: 280px; height: auto; }
+}
+
+@keyframes taishoFadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}

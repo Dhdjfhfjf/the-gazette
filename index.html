@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABOUT ME</title>
+    <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="taisho-pure-bg"></div>
+    <div class="taisho-paper-texture"></div>
+
+    <main class="taisho-gazette-card">
+        
+        <header class="gazette-header">
+            <div class="header-top-line">
+                <span class="gazette-date">✦ 其之二零二六 ・ 葉月 ✦</span>
+                <span class="gazette-serial">第 貳 零 參 號</span>
+            </div>
+            <h1 class="gazette-title">WELCOME</h1>
+            <p class="gazette-subtitle">MATCHA & MOCHA ROMANCE GAZETTE</p>
+            <div class="gazette-double-line"></div>
+        </header>
+
+        <!-- 🧭 古典雙線導覽列 -->
+        <nav class="taisho-ticket-nav" id="stickyNav">
+            <button class="nav-btn active" onclick="switchTab('home')">
+                <span class="btn-decor-star">✦</span>
+                <span class="btn-en">HOME</span>
+            </button>
+            <button class="nav-btn" onclick="switchTab('like')">
+                <span class="btn-decor-star">✦</span>
+                <span class="btn-en">LIKE</span>
+            </button>
+            <button class="nav-btn" onclick="switchTab('dislike')">
+                <span class="btn-decor-star">✦</span>
+                <span class="btn-en">DISLIKE</span>
+            </button>
+        </nav>
+
+        <div class="gazette-core-layout">
+            
+            <aside class="gazette-profile-side">
+                <div class="modern-portrait-box">
+                    <div class="portrait-inner-frame">
+                        <img src="cms.png" alt="電腦版視覺" class="portrait-img img-desktop-only">
+                        <img src="cms.png" alt="手機版視覺" class="portrait-img img-mobile-only">
+                        <div class="frame-corner tl"></div><div class="frame-corner tr"></div><div class="frame-corner bl"></div><div class="frame-corner br"></div>
+                    </div>
+                </div>
+
+                <!-- 🔗 聯絡按鈕區域 -->
+                <div class="clean-social-container">
+                    <div class="plate-title title-desktop-only">✦ 聯絡方式 ✦</div>
+                    
+                    <div class="social-responsive-box">
+                        <a href="https://www.facebook.com/share/1GRkbWFGGC/?mibextid=wwXIfr" target="_blank" class="social-each-link">
+                            <span class="link-text">FACEBOOK</span>
+                        </a>
+                        <a href="https://www.threads.com/@kopfkino1110?igshid=NTc4MTIwNjQ2YQ==" target="_blank" class="social-each-link">
+                            <span class="link-text">THREADS</span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="gazette-content-side">
+                
+                <!-- 🏠 HOME 分頁 -->
+                <div id="home" class="tab-pane active">
+                    <div class="section-title-banner">
+                        <h2>✦ 基本資料介紹</h2>
+                        <span class="banner-sub">PROFILE INDEX</span>
+                    </div>
+
+                    <div class="taisho-profile-ledger ledger-home-color">
+                        <div class="ledger-row">
+                            <span class="ledger-label">〔 姓名 〕</span>
+                            <span class="ledger-value">yan /言 /自取</span>
+                        </div>
+                        <div class="ledger-row">
+                            <span class="ledger-label">〔 版面 〕</span>
+                            <span class="ledger-value">日常 /委託 /雜項</span>
+                        </div>
+                        <div class="ledger-row-status">
+                            <span class="ledger-label">〔 狀態 〕</span>
+                            <span class="taisho-stamp-badge">好友募集中</span>
+                        </div>
+                    </div>
+
+                    <div class="supplement-memo-box home-memo">
+                        <div class="memo-badge">❖  補 充 事 項</div>
+                        <div class="memo-body">
+                            <p>日常低浮，會盡可能留言互動但多數是按表符<br>其他內容可以點上方切換閱讀，不推薦用電腦看因為排版很醜。</p>
+                        </div>
+                    </div>
+
+                    <div class="taisho-footer-spacer">
+                        <div class="spacer-line" style="text-align: right;"><span>&nbsp;</span></div>
+                    </div>
+                </div>
+
+                <!-- 🌸 LIKE 分頁 -->
+                <div id="like" class="tab-pane">
+                    <div class="section-title-banner">
+                        <h2>✦ 喜好清單</h2>
+                        <span class="banner-sub">FAVORITE ARCHIVE</span>
+                    </div>
+                    <div class="supplement-memo-box home-memo">
+                        <div class="memo-body">
+                            <p>以下僅列出目前有看或持續喜歡作品，歡迎推坑更多作品</p>
+                            <!-- 📌 日期已成功獨立一行並設定為靠右對齊 -->
+                            <p style="text-align: right; margin-top: 6px; opacity: 0.8;">更新時間：2026.06.04</p>
+                        </div>
+                    </div>
+                    <div class="like-quad-grid">
+                        <div class="quad-block bg-oats-tint">
+                            <div class="quad-header">✦ ANIMATION ／ 動畫</div>
+                            <div class="bubble-tags-cloud">
+                                <span class="bubble-tag">銀魂</span>
+                                <span class="bubble-tag">fate</span>
+                                <span class="bubble-tag">蟲師</span>
+                                <span class="bubble-tag">新石紀</span>
+                                <span class="bubble-tag">排球少年</span>
+                                <span class="bubble-tag">銀河特急</span>
+                                <span class="bubble-tag">櫻蘭高校男子公關部</span>
+                                <span class="bubble-tag">ACCA13區監查課</span>
+                                <span class="bubble-tag">杖與劍的魔劍譚</span>
+                            </div>
+                        </div>
+
+                        <div class="quad-block bg-matcha-tint">
+                            <div class="quad-header">✦ COMIC ／ 漫畫</div>
+                            <div class="bubble-tags-cloud">
+                                <span class="bubble-tag">黑影之夜</span>
+                                <span class="bubble-tag">躍動青春</span>
+                                <span class="bubble-tag">去見媽咪的路上</span>
+                                <span class="bubble-tag">正相反的你和我</span>
+                            </div>
+                        </div>
+
+                        <div class="quad-block bg-oats-tint">
+                            <div class="quad-header">✦ BOOKS ／ 書籍</div>
+                            <div class="bubble-tags-cloud">
+                                <span class="bubble-tag">案簿錄</span>
+                                <span class="bubble-tag">酒與槍</span>
+                                <span class="bubble-tag">小市民</span>
+                                <span class="bubble-tag">準繩之牆</span>
+                                <span class="bubble-tag">特殊傳說</span>
+                            </div>
+                        </div>
+
+                        <div class="quad-block bg-matcha-tint">
+                            <div class="quad-header">✦ 其他</div>
+                            <div class="bubble-tags-cloud">
+                                <span class="bubble-tag">私立超能高校</span>
+                                <span class="bubble-tag">Hundred Note</span>
+                                <span class="bubble-tag"> STRANGE EDEN</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="taisho-footer-spacer">
+                        <div class="spacer-line" style="text-align: right;"><span>🌸 完</span></div>
+                    </div>
+                </div>
+
+                <!-- ⚡ DISLIKE 分頁 -->
+                <div id="dislike" class="tab-pane">
+                    <div class="section-title-banner">
+                        <h2>✦ 交友須知及避雷項目</h2>
+                        <span class="banner-sub">NOTICE & DISLIKE</span>
+                    </div>
+                    
+                    <!-- 1️⃣ 第一區塊：深色補充事項（保持不變） -->
+                    <div class="supplement-memo-box dislike-heavy-box" style="margin-top: 0; margin-bottom: 24px;">
+                        <div class="memo-body text-light">
+                            <p>基本上不幫忙拒同擔/嫁，請見諒！<br>相處自帶避雷針，會自行避開不喜內容。自然相處即可</p>
+                        </div>
+                    </div>
+
+                    <!-- 2️⃣ 第二區塊：我不喜歡的（改為氣泡樣式框） -->
+                    <div class="quad-block bg-matcha-tint" style="margin-bottom: 24px;">
+                        <div class="quad-header">✦ 我不喜歡的 ／ DISLIKE</div>
+                        <div class="bubble-tags-cloud">
+                            <span class="bubble-tag">沒禮貌</span>
+                            <span class="bubble-tag">無遮擋放出R18内容</span>
+                            <span class="bubble-tag">抱怨/爭執貼文佔多數</span>
+                        </div>
+                    </div>
+
+                    <!-- 3️⃣ 第三區塊：你可能不喜歡的（改為氣泡樣式框） -->
+                    <div class="quad-block bg-oats-tint">
+                        <div class="quad-header">✦ 你可能不喜歡的 ／ MAYBE NOT FOR YOU</div>
+                        <div class="bubble-tags-cloud">
+                            <span class="bubble-tag">髒話</span>
+                            <span class="bubble-tag">經常性低浮</span>
+                            <span class="bubble-tag">emoji重度使用者</span>
+                            <span class="bubble-tag">常按表符少留言</span>
+                        </div>
+                    </div>
+
+                    <div class="taisho-footer-spacer">
+                        <div class="spacer-line" style="text-align: right;"><span>✦</span></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 🦊 吉祥物框架 -->
+    <div class="universal-mascot-anchor">
+        <div class="mascot-bubble" onclick="openNoticeModal()">
+            <span class="bubble-star">✦</span> 感謝閱讀～ෆ<span class="bubble-star"></span>
+        </div>
+        <img src="03.png" alt="招牌娘" class="mascot-sprite" onclick="openNoticeModal()">
+    </div>
+
+    <!-- ✉️ 彈窗 -->
+    <div class="retro-modal-mask" id="noticeModal" onclick="closeNoticeModal()">
+        <div class="retro-modal-paper" onclick="event.stopPropagation()">
+            <div class="modal-decor-border">
+                <h3 class="modal-title">❖ 簡易介紹 ❖</h3>
+                <p class="modal-text">版面最常出現的設定<br>有獨立世界觀但通常不會發<br>版面出現多為約稿圖片或少量文章</p>
+                <button class="modal-close-btn" onclick="closeNoticeModal()">知曉了</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            
+            document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+            const targetPane = document.getElementById(tabId);
+            if(targetPane) { targetPane.classList.add('active'); }
+            
+            const nav = document.getElementById('stickyNav');
+            window.scrollTo({ top: nav.offsetTop - 10, behavior: 'smooth' });
+        }
+        
+        function openNoticeModal() {
+            document.getElementById('noticeModal').classList.add('active');
+        }
+
+        function closeNoticeModal() {
+            document.getElementById('noticeModal').classList.remove('active');
+        }
+    </script>
+</body>
+</html>
